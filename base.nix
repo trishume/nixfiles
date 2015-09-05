@@ -3,7 +3,6 @@
 {
   time.timeZone = "US/Eastern";
 
-  networking.hostName = hostname;
   security.sudo.wheelNeedsPassword = false;
   swapDevices = [ { device = "/var/swapfile"; size = 2048; } ];
 
