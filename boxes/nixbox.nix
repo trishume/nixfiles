@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  imports =
+    [
+      ../base.nix
+    ];
+
   networking.hostName = "nixbox"; # Define your hostname.
   networking.hostId = "7fde2033";
 
