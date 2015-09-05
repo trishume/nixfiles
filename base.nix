@@ -39,7 +39,8 @@
 
   environment.shellAliases = {
     nixfiles = "pushd /etc/nixos/nixfiles && sudo git pull --ff-only && popd && sudo nixos-rebuild";
-  }
+    nixfiles-co = "pushd /etc/nixos/nixfiles && sudo git fetch && sudo git checkout";
+  };
 
   # Make sure the only way to add users/groups is to change this file
   # users.mutableUsers = false;
