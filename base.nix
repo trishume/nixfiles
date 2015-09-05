@@ -37,6 +37,10 @@
     allowUnfree = true;
   };
 
+  environment.shellAliases = {
+    nixfiles = "pushd /etc/nixos/nixfiles && sudo git pull --ff-only && popd && sudo nixos-rebuild";
+  }
+
   # Make sure the only way to add users/groups is to change this file
   # users.mutableUsers = false;
 
