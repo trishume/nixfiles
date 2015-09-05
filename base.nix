@@ -23,7 +23,6 @@
      wget
      which
      zip
-     ssh
    ];
 
   services = {
@@ -33,8 +32,6 @@
     # locate.enable = true;
     # locate.period = "00 12 * * *";
   };
-
-  programs.ssh.startAgent = true;
 
   nixpkgs.config = {
     allowUnfree = true;
