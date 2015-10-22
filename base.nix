@@ -14,6 +14,7 @@
      aspellDicts.en
      bashCompletion
      coreutils
+     cowsay
      gitAndTools.gitFull
      gnumake
      htop
