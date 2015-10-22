@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.services.fourStore;
+  cfg = config.services.nixoku;
   reposDir = "/var/nixoku/repos";
   nixokuUser = "nixoku";
   run = "${pkgs.su}/bin/su -s ${pkgs.stdenv.shell} ${nixokuUser}";
