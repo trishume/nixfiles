@@ -14,7 +14,6 @@
      aspellDicts.en
      bashCompletion
      coreutils
-     cowsay
      gitAndTools.gitFull
      gnumake
      htop
@@ -24,6 +23,9 @@
      wget
      which
      zip
+
+     cowsay
+     figlet
    ];
 
   services = {
