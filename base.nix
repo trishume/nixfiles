@@ -23,9 +23,6 @@
      wget
      which
      zip
-
-     cowsay
-     figlet
    ];
 
   services = {
