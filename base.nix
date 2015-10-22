@@ -23,6 +23,8 @@
      wget
      which
      zip
+
+     cowsay
    ];
 
   services = {
