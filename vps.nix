@@ -6,7 +6,6 @@
       enable = true;
       mutable = true;
     };
-
-    networking.firewall.allowedTCPPorts = [5000];
   };
+  networking.firewall.allowedTCPPorts = [5000];
 }
