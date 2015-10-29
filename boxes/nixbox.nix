@@ -4,6 +4,7 @@
   imports =
     [
       ../base.nix
+      ../vps.nix
     ];
 
   networking.hostName = "nixbox"; # Define your hostname.
