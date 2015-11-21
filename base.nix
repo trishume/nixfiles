@@ -13,10 +13,13 @@
      aspell
      aspellDicts.en
      bashCompletion
+     binutils
      coreutils
+     elfutils
      gitAndTools.gitFull
      gnumake
      htop
+     patchelf
      ranger
      utillinux # for dmesg, kill,...
      vim
@@ -25,6 +28,8 @@
      zip
      nix-prefetch-scripts
      cowsay
+     nim
+     nox
    ];
 
   services = {

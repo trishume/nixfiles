@@ -13,6 +13,7 @@
       dataDir = "/var/lib/znc";
 
       confOptions = {
+        port = 8832;
         userName = "thume";
         nick = "thume";
         useSSL = false;
@@ -36,5 +37,5 @@
       };
     };
   };
-  networking.firewall.allowedTCPPorts = [5000];
+  networking.firewall.allowedTCPPorts = [8832];
 }
