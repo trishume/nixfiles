@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+  imports = [ ./rate-with-science.nix ];
   environment.systemPackages = with pkgs; [
     znc
    ];
