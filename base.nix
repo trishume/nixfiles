@@ -23,7 +23,7 @@
      wget
      which
      zip
-
+     nix-prefetch-scripts
      cowsay
    ];
 
