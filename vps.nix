@@ -3,9 +3,21 @@
 {
   imports = [ ./rate-with-science.nix ];
   environment.systemPackages = with pkgs; [
-    znc
+    tmux
     weechat
+    znc
    ];
+
+  systemd.services.ircSession = {
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+    serviceConfig = {
+      Type = "forking";
+      User = "tristan";
+      ExecStart = ''${pkgs.tmux}/bin/tmux new-session -d -s irc -n irc ${pkgs.weechat}/bin/weechat'';
+      ExecStop = ''${pkgs.tmux}/bin/tmux kill-session -t irc'';
+    };
+  };
 
   services = {
     znc = {
@@ -39,5 +51,5 @@
       };
     };
   };
-  networking.firewall.allowedTCPPorts = [8832];
+  networking.firewall.allowedTCPPorts = [8832 9001];
 }
