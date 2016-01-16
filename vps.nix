@@ -5,9 +5,15 @@
   environment.systemPackages = with pkgs; [
     tmux
     weechat
-    znc
    ];
 
+  # See https://weechat.org/files/doc/devel/weechat_quickstart.en.html for
+  # manual setup. Weechat uses a weird mutable config file system that
+  # doesn't play well with NixOS immutability
+  #
+  # Also run the following to set up the relay:
+  # /set relay.network.password yourpassword
+  # /relay add weechat 9001
   systemd.services.ircSession = {
     wantedBy = [ "multi-user.target" ];
     after = [ "network.target" ];
@@ -19,37 +25,5 @@
     };
   };
 
-  services = {
-    znc = {
-      #enable = true;
-      enable = false;
-      # Bug means the default dir has extra slash
-      dataDir = "/var/lib/znc";
-
-      confOptions = {
-        port = 8832;
-        userName = "thume";
-        nick = "thume";
-        useSSL = false;
-        userModules = [ "sasl"];
-        # Cludge using the pass block as general user config
-        passBlock = ''
-          Pass       = sha256#5da3ad0154d4c0e4d3e11ddbb62a7b6c650d95f41faec72e06c1e72cfc431915#4638!Jgyf6*d4cUm!sxU#
-          <Network freenode>
-            LoadModule = simple_away
-            Server     = irc.freenode.net +7000
-            <Chan #nixos>
-            </Chan>
-            <Chan #csc>
-            </Chan>
-            <Chan #ve3uow>
-            </Chan>
-            <Chan #geekhack>
-            </Chan>
-          </Network>
-        '';
-      };
-    };
-  };
-  networking.firewall.allowedTCPPorts = [8832 9001];
+  networking.firewall.allowedTCPPorts = [9001];
 }
