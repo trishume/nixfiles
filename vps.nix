@@ -4,11 +4,13 @@
   imports = [ ./rate-with-science.nix ];
   environment.systemPackages = with pkgs; [
     znc
+    weechat
    ];
 
   services = {
     znc = {
-      enable = true;
+      #enable = true;
+      enable = false;
       # Bug means the default dir has extra slash
       dataDir = "/var/lib/znc";
 
