@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./rate-with-science.nix ];
+  imports = [ ./rate-with-science.nix ./kibana.nix ];
   environment.systemPackages = with pkgs; [
     tmux
     weechat
