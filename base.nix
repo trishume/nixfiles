@@ -14,22 +14,25 @@
      aspellDicts.en
      bashCompletion
      binutils
+     bundler
      coreutils
      elfutils
      gitAndTools.gitFull
      gnumake
      htop
+     mosh
+     nim
+     nix-prefetch-scripts
+     nox
      patchelf
      ranger
+     ruby
+     rubygems
      utillinux # for dmesg, kill,...
      vim
      wget
      which
      zip
-     nix-prefetch-scripts
-     cowsay
-     nim
-     nox
    ];
 
   services = {
@@ -39,6 +42,9 @@
     # locate.enable = true;
     # locate.period = "00 12 * * *";
   };
+
+  # for mosh
+  networking.firewall.allowedUDPPortRanges = [ { from = 60000; to = 61000; } ];
 
   nixpkgs.config = {
     allowUnfree = true;
