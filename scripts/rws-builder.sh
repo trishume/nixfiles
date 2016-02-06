@@ -1,18 +1,14 @@
 #!/usr/bin/env bash
 
-buildInputs="$sqlite"
 source $stdenv/setup
 
-PATH=$nim/bin:$PATH
-
-echo "Copying RWS"
-mkdir $out
+echo "Setting up output directory"
+mkdir -p $out
 cp -r $src/* $out/
-echo "Linking stuff"
-ln -s $jester $out/jester
 ln -s $wikidata $out/data
 
 echo "Building Server"
 cd $out
-nim c -d:release server.nim
-patchelf --set-rpath $libPath ./server
+${dmd}/bin/dmd -g -ofratewithscience -version=VibeNoSSL -version=VibeLibeventDriver -version=VibeDefaultMain -L-L${sqlite}/lib -L-L${libevent}/lib -L-lsqlite3 -L-levent -L-levent_pthreads -I${dmdpath} ${src}/source/*.d ${d2sqlite3}/source/*.d ${gfm}/core/gfm/core/queue.d ${vibed}/vibed.a
+#dub build --cache=local --vverbose --build=release
+#patchelf --set-rpath $libPath ./ratewithscience

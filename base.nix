@@ -17,9 +17,11 @@
      bundler
      coreutils
      elfutils
+     gdb
      gitAndTools.gitFull
      gnumake
      htop
+     llvmPackages.lldb
      mosh
      nim
      nix-prefetch-scripts
