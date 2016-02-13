@@ -2,7 +2,7 @@
 let
 wikidata = pkgs.fetchzip {
   url = "http://thume.net/bigdownloads/wikidata.zip";
-  sha256 = "062fgwbfgkdja2q1f08kmdhpzgc124k0xpkqd39d1zc6bc7cbsx2";
+  sha256 = "0h42qd2486j4v1m1xnjdgdy6n06fa4a8yknl0325qsr6p50ld3ik";
 };
 vibed = pkgs.stdenv.mkDerivation rec {
   name = "vibe.d";
@@ -61,8 +61,14 @@ utilitysite = pkgs.stdenv.mkDerivation {
   builder = ./scripts/setup-downloads.sh;
   wikidata = pkgs.fetchurl {
     url = "http://thume.net/bigdownloads/wikidata.zip";
-    sha256 = "1z2c4f16ln7j0bkqfmhclzqihqk8viy5sn8mv5kzb3rp5p1jmnjh";
+    sha256 = "1ygmn04swa3ykq83d1qw5wr8dzpp2c8yvcfi7ns047b4pv61j42j";
   };
+  #wikidata = pkgs.stdenv.mkDerivation {
+  #  name = "wikidata.zip";
+  #  outputHashMode = "recursive";
+  #  outputHashAlgo = "sha256";
+  #  outputHash = "1nzxqd3bvwr1c2jma4vm7s8v5pqnhl2ygzzzk9fim9rx1sv1fpl2";
+  #};
 };
 in
 {
