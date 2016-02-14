@@ -30,8 +30,8 @@ rws = pkgs.stdenv.mkDerivation rec {
   src = pkgs.fetchFromGitHub {
     owner = "trishume";
     repo = "ratewithscience";
-    rev = "cbd71cee66963564bbd6a908a09fa5714c95f438";
-    sha256 = "1hjj7k3138rh680ncpprfqr7rpb7r843hjbq99alpzh8mhiqa6xx";
+    rev = "327feec76dfacc1175e588d1acf7a5b5cacf239c";
+    sha256 = "119mcm866bjb38v576hqwdz7c4pp8cql2rzqn529ksflrwvwgqg6";
   };
 
   builder = ./scripts/rws-builder.sh;
