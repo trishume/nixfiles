@@ -23,13 +23,25 @@ hound = with pkgs; with pkgs.goPackages; buildGoPackage rec {
 houndDir = "/var/lib/hound";
 houndConf = builtins.toFile "config.json" (builtins.toJSON {
   max-concurrent-indexers = 2;
-  dbpath = "data";
+  dbpath = "${houndDir}/data";
   repos = {
       nixpkgs = {
           "url" = "https://www.github.com/NixOS/nixpkgs.git";
       };
   };
 });
+hounddLauncher = with pkgs; stdenv.mkDerivation {
+  name = "houndd-launcher";
+  phases = [ "installPhase" ];
+  buildInputs = [ makeWrapper ];
+  installPhase = ''
+    mkdir -p $out/bin
+    ln -s ${hound.bin}/bin/houndd $out/bin/houndd
+    wrapProgram $out/bin/houndd \
+      --set SSL_CERT_FILE "/etc/ssl/certs/ca-certificates.crt" \
+      --prefix PATH : "${git}/bin"
+  '';
+};
 in
 {
   imports = [
@@ -66,12 +78,13 @@ in
     uid = 200002;
     home = houndDir;
     isSystemUser = true;
+    createHome = true;
   };
   systemd.services.houndd = {
     wantedBy = [ "multi-user.target" ];
     after = [ "network.target" ];
     serviceConfig = {
-      ExecStart = "${hound.bin}/bin/houndd -conf=${houndConf}";
+      ExecStart = "${hounddLauncher}/bin/houndd -conf=${houndConf}";
       User = "hound";
       Restart = "on-failure";
       WorkingDirectory = houndDir;
