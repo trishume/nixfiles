@@ -92,6 +92,7 @@ in
   };
 
 
+  # TODO: move this to a better place
   services.nginx = {
     enable = true;
     httpConfig = ''
@@ -126,6 +127,15 @@ in
         proxy_set_header Host $http_host;
         proxy_redirect off;
         proxy_pass http://127.0.0.1:5000;
+      }
+    }
+
+    server {
+      server_name hound.thume.net;
+      location / {
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_pass http://127.0.0.1:6080;
       }
     }
     '';
