@@ -15,8 +15,11 @@
      bashCompletion
      binutils
      bundler
+     cargo
      coreutils
+     cowsay
      elfutils
+     gcc
      gdb
      gitAndTools.gitFull
      gnumake
@@ -29,7 +32,7 @@
      patchelf
      ranger
      ruby
-     rubygems
+     rustc
      utillinux # for dmesg, kill,...
      vim
      wget

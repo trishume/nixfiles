@@ -3,6 +3,7 @@
   imports = [
     ./rate-with-science.nix
     ./hound.nix
+    # ./dayder.nix
     # ./kibana.nix
   ];
   environment.systemPackages = with pkgs; [
