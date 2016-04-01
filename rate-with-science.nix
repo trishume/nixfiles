@@ -56,20 +56,6 @@ rws = pkgs.stdenv.mkDerivation rec {
   };
   dmdpath = "${src}/source:${vibed}/source:${gfm}/core:${d2sqlite3}/source";
 };
-utilitysite = pkgs.stdenv.mkDerivation {
-  name = "utilitysite";
-  builder = ./scripts/setup-downloads.sh;
-  wikidata = pkgs.fetchurl {
-    url = "http://thume.net/bigdownloads/wikidata.zip";
-    sha256 = "1ygmn04swa3ykq83d1qw5wr8dzpp2c8yvcfi7ns047b4pv61j42j";
-  };
-  #wikidata = pkgs.stdenv.mkDerivation {
-  #  name = "wikidata.zip";
-  #  outputHashMode = "recursive";
-  #  outputHashAlgo = "sha256";
-  #  outputHash = "1nzxqd3bvwr1c2jma4vm7s8v5pqnhl2ygzzzk9fim9rx1sv1fpl2";
-  #};
-};
 in
 {
   users.extraUsers = lib.singleton {
@@ -92,28 +78,7 @@ in
   };
 
 
-  # TODO: move this to a better place
-  services.nginx = {
-    enable = true;
-    httpConfig = ''
-    sendfile on;
-    tcp_nopush on;
-    server {
-      server_name thume.net;
-      listen 80;
-      keepalive_timeout 20;
-
-      index index.html;
-      root ${utilitysite};
-
-      location /stashline {
-        rewrite ^/stashline/?(.*)$ http://thume.ca/stashline/$1 permanent;
-      }
-      location /bigdownloads/ {
-        autoindex on;
-      }
-    }
-
+  services.nginx.httpConfig = ''
     server {
       server_name ratewith.science;
       root ${rws}/public;
@@ -129,26 +94,7 @@ in
         proxy_pass http://127.0.0.1:5000;
       }
     }
-
-    server {
-      server_name hound.thume.net;
-      location / {
-        proxy_set_header Host $http_host;
-        proxy_redirect off;
-        proxy_pass http://127.0.0.1:6080;
-      }
-    }
-
-    server {
-      server_name dayder.thume.net dayder.thume.ca;
-      location / {
-        proxy_set_header Host $http_host;
-        proxy_redirect off;
-        proxy_pass http://127.0.0.1:8080;
-      }
-    }
-    '';
-  };
+  '';
 
   networking.firewall.allowedTCPPorts = [80 5000];
 }
