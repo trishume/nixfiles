@@ -14,6 +14,9 @@ utilitysite = pkgs.stdenv.mkDerivation {
   #  outputHash = "1nzxqd3bvwr1c2jma4vm7s8v5pqnhl2ygzzzk9fim9rx1sv1fpl2";
   #};
 };
+netdata = pkgs.callPackage ./pkgs/netdata.nix {};
+netdataConf = ./config/netdata.conf;
+netdataDir = "/var/lib/netdata";
 in
 {
   imports = [
@@ -25,6 +28,7 @@ in
   environment.systemPackages = with pkgs; [
     tmux
     weechat
+    netdata
    ];
 
   # See https://weechat.org/files/doc/devel/weechat_quickstart.en.html for
@@ -42,6 +46,27 @@ in
       User = "tristan";
       ExecStart = ''${pkgs.tmux}/bin/tmux new-session -d -s irc -n irc ${pkgs.weechat}/bin/weechat'';
       ExecStop = ''${pkgs.tmux}/bin/tmux kill-session -t irc'';
+    };
+  };
+
+  users.extraUsers = pkgs.lib.singleton {
+    name = "netdata";
+    description = "Netdata server user";
+    uid = 200008;
+  };
+  systemd.services.netdata = {
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+    preStart =
+      ''
+      mkdir -p ${netdataDir}/logs
+      chmod 700 ${netdataDir}
+      chown -R netdata ${netdataDir}
+      '';
+    serviceConfig = {
+      Type = "forking";
+      ExecStart = "${netdata}/bin/netdata -c ${netdataConf} -u netdata";
+      Restart = "on-failure";
     };
   };
 
@@ -68,5 +93,5 @@ in
     '';
   };
 
-  networking.firewall.allowedTCPPorts = [9001];
+  networking.firewall.allowedTCPPorts = [9001 19999];
 }
