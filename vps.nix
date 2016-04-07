@@ -49,6 +49,7 @@ in
     };
   };
 
+  users.extraGroups.netdata.gid = 220008;
   users.extraUsers = pkgs.lib.singleton {
     name = "netdata";
     description = "Netdata server user";
@@ -60,8 +61,9 @@ in
     preStart =
       ''
       mkdir -p ${netdataDir}/logs
-      chmod 700 ${netdataDir}
-      chown -R netdata ${netdataDir}
+      cp -r ${netdata}/share/netdata/web ${netdataDir}/web
+      chmod -R 700 ${netdataDir}
+      chown -R netdata:netdata ${netdataDir}
       '';
     serviceConfig = {
       Type = "forking";

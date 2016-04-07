@@ -1,4 +1,5 @@
-{ stdenv, fetchurl, pkgconfig, git, coreutils, which, zlib, makeWrapper, iproute, gawk }:
+{ stdenv, fetchurl, pkgconfig, git, coreutils, which, zlib, makeWrapper,
+  iproute, gawk, netcat, procps, strace, utillinux, time, libcap, gnugrep, gnused, attr, cpio, acl }:
 
 stdenv.mkDerivation {
   name = "netdata-1.0.0";
@@ -10,6 +11,6 @@ stdenv.mkDerivation {
   postFixup = ''
     wrapProgram $out/bin/netdata \
       --set SSL_CERT_FILE "/etc/ssl/certs/ca-certificates.crt" \
-      --prefix PATH : "${iproute}/bin:${git}/bin:${coreutils}/bin:${which}/bin:${gawk}/bin"
+      --prefix PATH : "${iproute}/bin:${git}/bin:${coreutils}/bin:${which}/bin:${gawk}/bin:${netcat}/bin:${procps}/bin:${strace}/bin:${utillinux}/bin:${time}/bin:${libcap}/bin:${gnugrep}/bin:${gnused}/bin:${attr}/bin:${cpio}/bin:${acl}/bin:"
   '';
 }
