@@ -92,6 +92,14 @@ in
         autoindex on;
       }
     }
+    server {
+      server_name netdata.thume.net;
+      location / {
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_pass http://127.0.0.1:19999;
+      }
+    }
     '';
   };
 
