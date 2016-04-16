@@ -20,7 +20,7 @@ in
     ./rate-with-science.nix
     ./hound.nix
     ./dayder.nix
-    ./netdata.nix
+    # ./netdata.nix
     # ./kibana.nix
   ];
   environment.systemPackages = with pkgs; [
