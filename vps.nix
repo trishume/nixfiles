@@ -69,5 +69,12 @@ in
     '';
   };
 
-  networking.firewall.allowedTCPPorts = [9001];
+  services.syncthing = {
+    enable = true;
+    dataDir = "/home/tristan/.syncthing";
+    user = "tristan";
+  };
+
+  networking.firewall.allowedTCPPorts = [9001 22000];
+  networking.firewall.allowedUDPPorts = [21027];
 }
