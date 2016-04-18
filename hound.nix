@@ -24,9 +24,7 @@ houndDir = "/var/lib/hound";
 houndRepos = [
   { user = "NixOS"; repo = "nixpkgs"; }
   { user = "itseez"; repo = "opencv"; }
-  { user = "openframeworks"; repo = "openFrameworks"; }
   { user = "syl20bnr"; repo = "spacemacs"; }
-  { user = "ktossell"; repo = "libuvc"; }
   { user = "pupil-labs"; repo = "pupil"; }
 ];
 houndConf = builtins.toFile "config.json" (builtins.toJSON {
