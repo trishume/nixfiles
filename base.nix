@@ -60,6 +60,8 @@
     nixfiles-co = "pushd /etc/nixos/nixfiles && sudo git fetch && sudo git checkout";
   };
 
+  services.journald.extraConfig = "SystemMaxUse=256M";
+
   # Make sure the only way to add users/groups is to change this file
   # users.mutableUsers = false;
 
