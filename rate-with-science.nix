@@ -37,8 +37,8 @@ rws = pkgs.stdenv.mkDerivation rec {
   builder = ./scripts/rws-builder.sh;
 
   dmd = pkgs.dmd;
-  sqlite = pkgs.sqlite;
-  libevent = pkgs.libevent;
+  sqlite = pkgs.sqlite.out;
+  libevent = pkgs.libevent.out;
   inherit wikidata;
   inherit vibed;
 
