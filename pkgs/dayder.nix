@@ -4,16 +4,22 @@ with rustPlatform;
 
 buildRustPackage rec {
   name = "dayder-${version}";
-  version = "1.0";
+  version = "2.0";
 
-  depsSha256 = "03jap7myf85xgx9270sws8x57nl04a1wx8szrk9qx24s9vnnjcnh";
+  depsSha256 = "12hn1xfphfgd6n9hi5m1cwxlnxamk26m0xak6bcbxg025rlj7q0z";
 
   src = fetchFromGitHub {
     owner = "trishume";
     repo = "dayder";
     rev = "v${version}";
-    sha256 = "1m8jk8bg94dq4qkh3s6ipmy6y060wdhrp2l3rjzl57z20l8c1y6z";
+    sha256 = "1sj97chhjwpxvchvc8kh39nald7fadpf28gmvarisxw5jhxnlyi0";
   };
+
+  postFixup = ''
+    mkdir -p $out/btsf
+    ln -s $src/btsf/* $out/btsf/
+    ln -s $src/public $out/public
+  '';
 
   meta = with stdenv.lib; {
     description = "Spurious correlation finder web app";
