@@ -25,6 +25,8 @@ in
   services.nginx.httpConfig = ''
     server {
       server_name dayder.thume.net dayder.thume.ca;
+      gzip on;
+      gzip_types application/octet-stream;
       location / {
         proxy_set_header Host $http_host;
         proxy_redirect off;
