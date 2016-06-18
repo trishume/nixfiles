@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-hound = with pkgs; with pkgs.goPackages; buildGoPackage rec {
+hound = with pkgs; buildGoPackage rec {
   rev  = "0a364935ba9db53e6f3f5563b02fcce242e0930f";
   name = "hound-${stdenv.lib.strings.substring 0 7 rev}";
   goPackagePath = "github.com/etsy/hound";
