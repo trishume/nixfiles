@@ -41,8 +41,8 @@ in
     serviceConfig = {
       Type = "forking";
       User = "tristan";
-      ExecStart = ''${pkgs.tmux}/bin/tmux new-session -d -s irc -n irc ${pkgs.weechat}/bin/weechat'';
-      ExecStop = ''${pkgs.tmux}/bin/tmux kill-session -t irc'';
+      ExecStart = ''${pkgs.tmux.bin}/bin/tmux new-session -d -s irc -n irc ${pkgs.weechat}/bin/weechat'';
+      ExecStop = ''${pkgs.tmux.bin}/bin/tmux kill-session -t irc'';
     };
   };
 
