@@ -75,6 +75,23 @@ in
     user = "tristan";
   };
 
+  # MQTT server for my LED strip
+  services.mosquitto = {
+    enable = true;
+    host = "0.0.0.0";
+    # Yes the passwords are public and you have the means to mess with my lighting.
+    # Please don't though, it will make me rethink publishing my Nix files and I think
+    # it is beneficial to have them publicly available for reference by others.
+    users.lightstrip = {
+      acl = ["topic readwrite lightstrip/#"];
+      password = "dumbpublic94732";
+    };
+    users.lightserver = {
+      acl = ["topic readwrite esp/#" "topic readwrite lightserver/#"];
+      password = "dumbpublic25487";
+    };
+  };
+
   networking.firewall.allowedTCPPorts = [9001 22000];
   networking.firewall.allowedUDPPorts = [21027];
 }
