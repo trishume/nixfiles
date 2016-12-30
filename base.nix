@@ -28,13 +28,16 @@
      mosh
      nim
      nix-prefetch-scripts
+     nodejs
      nox
      patchelf
+     python
      ranger
      ruby
      rustc
      utillinux # for dmesg, kill,...
      vim
+     watchman
      wget
      which
      zip
