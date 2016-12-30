@@ -87,7 +87,7 @@ in
       password = "dumbpublic94732";
     };
     users.lightserver = {
-      acl = ["topic readwrite esp/#" "topic readwrite lightserver/#"];
+      acl = ["topic readwrite lightstrip/#" "topic readwrite lightserver/#"];
       password = "dumbpublic25487";
     };
   };
