@@ -92,6 +92,6 @@ in
     };
   };
 
-  networking.firewall.allowedTCPPorts = [9001 22000];
+  networking.firewall.allowedTCPPorts = [9001 22000 1883];
   networking.firewall.allowedUDPPorts = [21027];
 }
