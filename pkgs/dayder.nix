@@ -11,7 +11,7 @@ buildRustPackage rec {
   name = "dayder-${version}";
   version = "2.1";
 
-  depsSha256 = "1rv063lk3wrnznj0nl4ykj1n58mp9lcas8zmai968jlm2sjbnscc";
+  depsSha256 = "0qhyzmfh976fpsxgrxmf7s5d29d9h9plwyf66x7lddwib8kfjp8z";
 
   src = fetchFromGitHub {
     owner = "trishume";
