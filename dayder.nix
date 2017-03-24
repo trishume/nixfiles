@@ -30,7 +30,7 @@ in
       location / {
         proxy_set_header Host $http_host;
         proxy_redirect off;
-        proxy_pass http://127.0.0.1:8080;
+        proxy_pass http://localhost:8080;
       }
     }
   '';
