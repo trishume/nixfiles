@@ -77,6 +77,10 @@ in
     };
   };
 
+  # Since the site is used infrequently but when it is, it needs to quickly traverse
+  # 500MB of memory in random order, getting swapped out is deadly and basically
+  # makes it unusable. Make the system try very hard not to swap things out for this reason.
+  boot.kernel.sysctl = { "vm.swappiness" = 0; };
 
   services.nginx.httpConfig = ''
     server {
