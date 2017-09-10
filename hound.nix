@@ -23,9 +23,9 @@ hound = with pkgs; buildGoPackage rec {
 houndDir = "/var/lib/hound";
 houndRepos = [
   { user = "NixOS"; repo = "nixpkgs"; }
-  { user = "itseez"; repo = "opencv"; }
-  { user = "syl20bnr"; repo = "spacemacs"; }
-  { user = "pupil-labs"; repo = "pupil"; }
+  # { user = "itseez"; repo = "opencv"; }
+  # { user = "syl20bnr"; repo = "spacemacs"; }
+  # { user = "pupil-labs"; repo = "pupil"; }
 ];
 houndConf = builtins.toFile "config.json" (builtins.toJSON {
   max-concurrent-indexers = 2;

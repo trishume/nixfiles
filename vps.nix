@@ -20,6 +20,7 @@ in
     ./rate-with-science.nix
     ./hound.nix
     ./dayder.nix
+    ./hnblogs.nix
     # ./netdata.nix
     # ./kibana.nix
   ];

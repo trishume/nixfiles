@@ -15,6 +15,7 @@
      bashCompletion
      binutils
      bundler
+     bundix
      cargo
      coreutils
      cowsay
