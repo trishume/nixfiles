@@ -3,8 +3,8 @@ let
 src = fetchFromGitHub {
   owner = "trishume";
   repo = "hnblogs";
-  rev = "561633306cd14f30315786647bea84c6c8addd27";
-  sha256 = "0s95nnvnbq8ixip767yhwx728q7p0ab5bnf7w9pfmkpzbrymfafs";
+  rev = "50a80950d6676ef446922f804e0d734f9ae0e493";
+  sha256 = "185vl3g6mzdpfhz0rikhkg7xnhil171igqhpwgaaxxp8yvbf1779";
 };
 version = "1.0";
 env = bundlerEnv rec {
