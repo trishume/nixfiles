@@ -66,6 +66,9 @@ in
       location /bigdownloads/ {
         autoindex on;
       }
+      location /misc/ {
+        alias /home/tristan/sites/;
+      }
     }
     '';
   };

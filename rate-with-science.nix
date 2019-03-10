@@ -84,7 +84,7 @@ in
 
   services.nginx.httpConfig = ''
     server {
-      server_name ratewith.science;
+      server_name ratewith.science ratewithscience.thume.ca ratewithscience.thume.net;
       root ${rws}/public;
       listen 80;
       keepalive_timeout 20;
