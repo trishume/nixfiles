@@ -18,9 +18,9 @@ in
 {
   imports = [
     ./rate-with-science.nix
-    ./hound.nix
+    # ./hound.nix
     ./dayder.nix
-    ./hnblogs.nix
+    # ./hnblogs.nix
     # ./netdata.nix
     # ./kibana.nix
   ];
@@ -73,11 +73,11 @@ in
     '';
   };
 
-  services.syncthing = {
-    enable = true;
-    dataDir = "/home/tristan/.syncthing";
-    user = "tristan";
-  };
+  # services.syncthing = {
+  #   enable = true;
+  #   dataDir = "/home/tristan/.syncthing";
+  #   user = "tristan";
+  # };
 
   # MQTT server for my LED strip
   services.mosquitto = {
@@ -96,6 +96,6 @@ in
     };
   };
 
-  networking.firewall.allowedTCPPorts = [9001 22000 1883];
+  networking.firewall.allowedTCPPorts = [9001 22000 1883 80];
   networking.firewall.allowedUDPPorts = [21027];
 }

@@ -28,7 +28,7 @@ in
       gzip on;
       gzip_types application/octet-stream;
       location / {
-        proxy_set_header Host $http_host;
+        proxy_set_header Host $host;
         proxy_redirect off;
         proxy_pass http://localhost:8080;
       }

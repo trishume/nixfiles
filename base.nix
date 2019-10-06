@@ -9,36 +9,37 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-     ack
-     aspell
-     aspellDicts.en
+     # ack
+     # aspell
+     # aspellDicts.en
      bashCompletion
      binutils
-     bundler
-     bundix
+     # bundler
+     # bundix
      cargo
+     carnix
      coreutils
-     cowsay
+     # cowsay
      elfutils
-     gcc
-     gdb
+     # gcc
+     # gdb
      gitAndTools.gitFull
      gnumake
      htop
-     llvmPackages.lldb
+     # llvmPackages.lldb
      mosh
-     nim
+     # nim
      nix-prefetch-scripts
-     nodejs
-     nox
+     # nodejs
+     # nox
      patchelf
-     python
-     ranger
-     ruby
+     # python
+     # ranger
+     # ruby
      rustc
      utillinux # for dmesg, kill,...
      vim
-     watchman
+     # watchman
      wget
      which
      zip
