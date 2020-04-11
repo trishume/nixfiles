@@ -9,16 +9,16 @@ fredData = fetchurl {
 in
 buildRustPackage rec {
   name = "dayder-${version}";
-  version = "2.2.1";
+  version = "2.2.2";
 
-  cargoSha256 = "0aq9g2pwxn14nf41bqz4796rzylsh1azilir7c667j6ya28pxc7y";
+  cargoSha256 = "10xgka90mm6mfhaag5x4v9jm2a6riq129sfhzl14p88lvgyw4f9k";
   verifyCargoDeps = true;
 
   src = fetchFromGitHub {
     owner = "trishume";
     repo = "dayder";
     rev = "v${version}";
-    sha256 = "116xz5fya970nzp9pg9f30an1llwyim831mnm4277483hjvc0yi6";
+    sha256 = "0f72swcj1ny843cy8wdw8wp0gxv913j0zyqzidazc66hvj4jqi26";
   };
 
 

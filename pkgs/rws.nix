@@ -11,7 +11,7 @@ buildRustPackage rec {
   name = "rws-${version}";
   version = "4.0";
 
-  cargoSha256 = "0n3hm58q4fgpskx5v5yxh8nzqba64wrsy3ph6rg5m03ynwcidvqd";
+  cargoSha256 = "1j5nxqpkwnbc3d7i73zgazgalhzcwqr10smryhf63w5bb3dgdjv7";
   verifyCargoDeps = true;
 
   src = fetchFromGitHub {

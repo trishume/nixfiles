@@ -4,7 +4,6 @@
   time.timeZone = "US/Eastern";
 
   security.sudo.wheelNeedsPassword = false;
-  swapDevices = [ { device = "/var/swapfile"; size = 2048; } ];
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -16,13 +15,14 @@
      binutils
      # bundler
      # bundix
-     cargo
-     carnix
+     # cargo
+     # carnix
+     # clang
      coreutils
      # cowsay
      elfutils
-     # gcc
-     # gdb
+     gcc
+     gdb
      gitAndTools.gitFull
      gnumake
      htop
@@ -36,7 +36,9 @@
      # python
      # ranger
      # ruby
-     rustc
+     # rustc
+     # rr
+     # rustup
      utillinux # for dmesg, kill,...
      vim
      # watchman
@@ -53,6 +55,10 @@
     # locate.period = "00 12 * * *";
   };
 
+  boot.kernel.sysctl = {
+    "kernel.perf_event_paranoid" = 1; # for rr, default: 2
+  };
+
   # for mosh
   networking.firewall.allowedUDPPortRanges = [ { from = 60000; to = 61000; } ];
 
@@ -60,10 +66,10 @@
     allowUnfree = true;
   };
 
-  environment.shellAliases = {
-    nixfiles = "pushd /etc/nixos/nixfiles && sudo git pull --ff-only && popd && sudo nixos-rebuild";
-    nixfiles-co = "pushd /etc/nixos/nixfiles && sudo git fetch && sudo git checkout";
-  };
+  # environment.shellAliases = {
+  #   nixfiles = "pushd /etc/nixos/nixfiles && sudo git pull --ff-only && popd && sudo nixos-rebuild";
+  #   nixfiles-co = "pushd /etc/nixos/nixfiles && sudo git fetch && sudo git checkout";
+  # };
 
   services.journald.extraConfig = "SystemMaxUse=256M";
 

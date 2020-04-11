@@ -20,12 +20,12 @@
 
   networking.hostId = "7fde2033";
 
-  swapDevices = [ { device = "/var/swapfile"; size = 2048; } ];
+  # swapDevices = [ { device = "/var/swapfile"; size = 2048; } ];
 
   environment.systemPackages = with pkgs; [
     wget
     vim
-    ranger
+    # ranger
     gitAndTools.gitFull
   ];
 

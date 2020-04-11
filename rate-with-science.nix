@@ -3,8 +3,7 @@ let
 rws = pkgs.callPackage ./pkgs/rws.nix {};
 in
 {
-  users.extraUsers = lib.singleton {
-    name = "ratews";
+  users.extraUsers.ratews = {
     description = "Rate With Science server user";
     uid = 200000;
     home = "${rws}";

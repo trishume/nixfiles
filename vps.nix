@@ -29,6 +29,8 @@ in
     weechat
    ];
 
+  swapDevices = [ { device = "/var/swapfile"; size = 2048; } ];
+
   # See https://weechat.org/files/doc/devel/weechat_quickstart.en.html for
   # manual setup. Weechat uses a weird mutable config file system that
   # doesn't play well with NixOS immutability
@@ -96,6 +98,6 @@ in
     };
   };
 
-  networking.firewall.allowedTCPPorts = [9001 22000 1883 80];
+  networking.firewall.allowedTCPPorts = [9001 22000 1883 80 7335];
   networking.firewall.allowedUDPPorts = [21027];
 }

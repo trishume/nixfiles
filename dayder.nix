@@ -5,8 +5,7 @@ in
 {
   environment.systemPackages = [ dayder ];
 
-  users.extraUsers = pkgs.lib.singleton {
-    name = "dayder";
+  users.extraUsers.dayder = {
     description = "Dayder server user";
     uid = 200005;
   };
@@ -25,6 +24,7 @@ in
   services.nginx.httpConfig = ''
     server {
       server_name dayder.thume.net dayder.thume.ca;
+      listen 80;
       gzip on;
       gzip_types application/octet-stream;
       location / {

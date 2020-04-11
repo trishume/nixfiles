@@ -25,6 +25,7 @@ in
   services.nginx.httpConfig = ''
     server {
       server_name hnblogs.thume.net hnblogs.thume.ca;
+      listen 80;
       gzip on;
       gzip_types application/octet-stream;
       location / {
